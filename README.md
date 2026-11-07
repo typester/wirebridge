@@ -11,8 +11,8 @@ What it is for:
   instead of signing in on each one, where such a network often admits only one device.
 
 <p>
-  <img src="docs/home.png" alt="Home: running, with the Wi-Fi to join" width="270">
-  <img src="docs/clients.png" alt="Clients: one connected, two not" width="270">
+  <img src="assets/home.png" alt="Home: running, with the Wi-Fi to join" width="270">
+  <img src="assets/clients.png" alt="Clients: one connected, two not" width="270">
 </p>
 
 [ofutun](https://github.com/hrntknr/ofutun) does the same with Go and gVisor.
@@ -120,7 +120,7 @@ The tests run WireGuard clients written with boringtun against the server on loo
 crates/core/     the Rust core: WireGuard (wg.rs), the TCP/UDP stack (stack/), the server the app drives through
                  UniFFI (server.rs), a client's config (conf.rs)
 apps/android/    the app: the foreground service, the Wi-Fi Direct group, the clients, the screens, the tile
-design/          what the icon was chosen from
+assets/          the screenshots, and what the icon was chosen from
 ```
 
 ## License
