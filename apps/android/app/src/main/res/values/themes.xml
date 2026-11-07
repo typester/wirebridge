@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Compose draws everything, so this only has to give the activity a window with no action bar. A Material
+         Components theme would pull in the View toolkit, which nothing here uses. Same as beyondmap. -->
+    <style name="Theme.Wirebridge" parent="android:Theme.Material.Light.NoActionBar" />
+</resources>

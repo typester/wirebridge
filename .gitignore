@@ -1,0 +1,21 @@
+# Rust
+/target
+
+# Gradle / Android. The cross-compiled core and the generated UniFFI bindings land under apps/android/app/build/,
+# which these rules cover. Nothing generated is tracked: a checked-in binding keeps compiling against an older ABI
+# long after the Rust has moved.
+.gradle/
+/apps/android/build/
+/apps/android/**/build/
+local.properties
+.kotlin/
+
+# Configs kept for measuring, which hold a client's private key, and the measurements' records. Never commit these.
+/local/
+
+# A config downloaded from the phone (wirebridge.conf, or "wirebridge (1).conf" the second time) holds a client's
+# private key. Never commit these either.
+/*.conf
+
+# macOS
+.DS_Store

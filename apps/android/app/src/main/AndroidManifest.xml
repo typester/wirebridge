@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <!-- Wi-Fi Direct (Direct.kt) needs it to make the group. It is also what lets a connectedDevice foreground service
+         start on Android 14+ without asking. -->
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
+    <!-- Making and reading the Wi-Fi Direct group the Mac joins. "Nearby devices" in Settings; the group is never used
+         to tell where the phone is, so no location permission comes with it. -->
+    <uses-permission
+        android:name="android.permission.NEARBY_WIFI_DEVICES"
+        android:usesPermissionFlags="neverForLocation" />
+    <uses-feature
+        android:name="android.hardware.wifi.direct"
+        android:required="true" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE_CONNECTED_DEVICE" />
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+
+    <application
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.Wirebridge">
+        <activity
+            android:name=".MainActivity"
+            android:exported="true"
+            android:launchMode="singleTop">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <!-- Exported so that `adb shell am start-foreground-service` can start and stop it while measuring, but only to
+             callers holding DUMP: the shell and the system have it, and an ordinary app cannot get it. -->
+        <service
+            android:name=".TunnelService"
+            android:exported="true"
+            android:permission="android.permission.DUMP"
+            android:foregroundServiceType="connectedDevice" />
+
+        <!-- Hands a client's config to Android's share sheet (Share.kt): the file sits in cache/share/, which the
+             app empties when it starts. -->
+        <provider
+            android:name="androidx.core.content.FileProvider"
+            android:authorities="${applicationId}.files"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/file_paths" />
+        </provider>
+
+        <!-- The Wi-Fi Direct group checked on its own, started over adb alone and exported like TunnelService. Not
+             while TunnelService runs: both make the same group. -->
+        <service
+            android:name=".P2pCheckService"
+            android:exported="true"
+            android:permission="android.permission.DUMP"
+            android:foregroundServiceType="connectedDevice" />
+    </application>
+</manifest>

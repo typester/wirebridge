@@ -1,0 +1,15 @@
+# Passed to uniffi-bindgen with `-c` from apps/android/app/build.gradle.kts. Global-config format: [defaults] is merged
+# into every crate's own settings.
+
+[defaults.bindings.kotlin]
+# UniFFI's generated checksum check cannot pass on aarch64-linux-android in a debug build, and the reason is in the
+# instruction rather than in anything this project does. The scaffolding exports `extern "C" fn ...() -> u16`, the
+# Kotlin side declares the return as `Int`, AAPCS64 leaves the upper bits of w0 unspecified for a sub-word return, and
+# rustc at opt-level 0 materialises a checksum >= 0x8000 with `movn`, so JNA reads a negative number. It only fires for
+# such a checksum, only in debug, and only on Android. Measured and disassembled in beyondmap
+# (crates/ffi/bindgen.toml and docs/android.md there, 2026-09-02).
+#
+# Switching it off costs little here: the bindings are generated from the very library the APK ships, in the same
+# Gradle build, with the crate sources declared as task inputs, and the contract-version check still runs because that
+# one returns a `u32`.
+omit_checksums = true

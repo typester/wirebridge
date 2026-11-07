@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- What FileProvider may hand out: a client's config written for the share sheet (Share.kt), and nothing else. -->
+<paths>
+    <cache-path
+        name="share"
+        path="share/" />
+</paths>
