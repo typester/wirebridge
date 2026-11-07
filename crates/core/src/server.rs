@@ -65,7 +65,6 @@ pub struct Client {
 pub struct Server {
     running: Mutex<Option<Running>>,
     local_addr: SocketAddr,
-    socket: Arc<UdpSocket>,
     counters: Arc<Counters>,
     peers: Arc<Peers>,
 }
@@ -74,6 +73,9 @@ struct Running {
     runtime: Runtime,
     cancel: CancellationToken,
     tracker: TaskTracker,
+    /// Here rather than in `Server`, so that [`Server::stop`] lets go of it. The app keeps a stopped server until the
+    /// garbage collector frees it, and Start right after Stop has to bind the same port.
+    socket: Arc<UdpSocket>,
 }
 
 #[uniffi::export]
@@ -167,9 +169,8 @@ impl Server {
         log::info!("listening on {local_addr}");
         drop(_entered);
         let server = Self {
-            running: Mutex::new(Some(Running { runtime, cancel, tracker })),
+            running: Mutex::new(Some(Running { runtime, cancel, tracker, socket })),
             local_addr,
-            socket,
             counters,
             peers,
         };
@@ -200,7 +201,7 @@ impl Server {
                 continue;
             };
             log::info!("resuming {} towards {endpoint}", peer.client().address);
-            let socket = self.socket.clone();
+            let socket = running.socket.clone();
             let cancel = running.cancel.clone();
             running.tracker.spawn_on(
                 until_cancelled(cancel, async move { wg::initiate(&socket, &peer, endpoint).await }),

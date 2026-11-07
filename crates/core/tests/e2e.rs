@@ -591,6 +591,21 @@ fn a_stranger_gets_no_answer() {
     stop_within(server, Duration::from_secs(5));
 }
 
+/// Once `stop` returns, the port is free while the server object still lives. The app needs exactly that: it keeps a
+/// stopped server around until the garbage collector frees it, and Start right after Stop binds the same port.
+#[test]
+fn stopping_frees_the_port() {
+    let keys = keys();
+    let server = start_server(&keys);
+    let addr = server.local_addr();
+    let mut mac = WgClient::new(addr, &keys);
+    mac.handshake();
+    server.stop();
+    let rebound = std::net::UdpSocket::bind(addr);
+    assert!(rebound.is_ok(), "{addr} still taken after stop: {:?}", rebound.err());
+    drop(server);
+}
+
 /// A client removed while the server runs is cut off at once; the client left keeps its session.
 #[test]
 fn a_removed_client_is_cut_off() {
