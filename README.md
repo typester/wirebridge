@@ -10,6 +10,11 @@ What it is for:
 - a Wi-Fi that wants a sign-in, as in hotels and on planes: sign in once on the phone, and every device goes through it,
   instead of signing in on each one, where such a network often admits only one device.
 
+<p>
+  <img src="docs/home.png" alt="Home: running, with the Wi-Fi to join" width="270">
+  <img src="docs/clients.png" alt="Clients: one connected, two not" width="270">
+</p>
+
 [ofutun](https://github.com/hrntknr/ofutun) does the same with Go and gVisor.
 
 ## How it works
