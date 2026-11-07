@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <!-- The launcher icon's background, behind ic_launcher_foreground's mint. -->
-    <color name="ic_launcher_background">#12343B</color>
+    <!-- Slate, behind ic_launcher_foreground's white bridge. The other colours the owner kept are in
+         design/icon-colours.svg. -->
+    <color name="ic_launcher_background">#5C6F82</color>
 </resources>

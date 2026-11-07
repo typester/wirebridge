@@ -114,6 +114,7 @@ The tests run WireGuard clients written with boringtun against the server on loo
 crates/core/     the Rust core: WireGuard (wg.rs), the TCP/UDP stack (stack/), the server the app drives through
                  UniFFI (server.rs), a client's config (conf.rs)
 apps/android/    the app: the foreground service, the Wi-Fi Direct group, the clients, the screens
+design/          what the icon was chosen from
 ```
 
 ## License

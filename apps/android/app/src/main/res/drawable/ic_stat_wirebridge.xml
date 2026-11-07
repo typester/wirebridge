@@ -1,25 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- The notification's icon: the launcher icon's tunnel and packets, white for the status bar. -->
+<!-- The notification's and the Quick Settings tile's icon: the launcher icon's bridge, drawn again for 24 dp with
+     heavier lines (the thin cables vanished at this size), white for the status bar. -->
 <vector xmlns:android="http://schemas.android.com/apk/res/android"
     android:width="24dp"
     android:height="24dp"
     android:viewportWidth="24"
     android:viewportHeight="24">
     <path
-        android:pathData="M6.5,19 V11 A5.5,5.5 0 0 1 17.5,11 V19"
+        android:pathData="M2.5,14.4 H21.5 M6.95,6.65 V17.35 M17.05,6.65 V17.35"
+        android:strokeColor="#FFFFFF"
+        android:strokeLineCap="round"
+        android:strokeWidth="2" />
+    <path
+        android:pathData="M6.95,6.65 Q12,16.16 17.05,6.65 M6.95,6.65 Q4.87,11.41 2.5,13.19 M17.05,6.65 Q19.13,11.41 21.5,13.19"
         android:strokeColor="#FFFFFF"
         android:strokeLineCap="round"
         android:strokeLineJoin="round"
-        android:strokeWidth="2.2" />
-    <path
-        android:fillAlpha="0.4"
-        android:fillColor="#FFFFFF"
-        android:pathData="M7.9,15.5 a1.1,1.1 0 1,0 2.2,0 a1.1,1.1 0 1,0 -2.2,0" />
-    <path
-        android:fillAlpha="0.7"
-        android:fillColor="#FFFFFF"
-        android:pathData="M10.9,15.5 a1.1,1.1 0 1,0 2.2,0 a1.1,1.1 0 1,0 -2.2,0" />
-    <path
-        android:fillColor="#FFFFFF"
-        android:pathData="M13.9,15.5 a1.1,1.1 0 1,0 2.2,0 a1.1,1.1 0 1,0 -2.2,0" />
+        android:strokeWidth="1.5" />
 </vector>

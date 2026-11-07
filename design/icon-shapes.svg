@@ -1,0 +1,89 @@
+<!-- The shapes considered for the icon on 2026-11-06: A, a suspension bridge (chosen); B, an arrow through a phone;
+     C, a relay. Each is shown at status-bar size below it, and B on four backgrounds in the second row. -->
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="1000" height="660" viewBox="0 0 1000 660">
+  <defs>
+    <!-- The launcher's visible area: the central 72 dp of the 108 dp adaptive icon, as a circle. -->
+    <clipPath id="mask"><circle cx="54" cy="54" r="36"/></clipPath>
+
+    <!-- A: a suspension bridge. -->
+    <g id="glyphA" fill="none" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M22,64 H86" stroke-width="5"/>
+      <path d="M37,38 V74 M71,38 V74" stroke-width="5"/>
+      <path d="M37,38 Q54,70 71,38" stroke-width="3.5"/>
+      <path d="M37,38 Q30,54 22,60 M71,38 Q78,54 86,60" stroke-width="3.5"/>
+    </g>
+
+    <!-- B: an arrow through a phone. -->
+    <g id="glyphB" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="5">
+      <path d="M41,47 V36 A6,6 0 0 1 47,30 H61 A6,6 0 0 1 67,36 V47"/>
+      <path d="M41,61 V72 A6,6 0 0 0 47,78 H61 A6,6 0 0 0 67,72 V61"/>
+      <path d="M22,54 H84"/>
+      <path d="M77,46.5 L84.5,54 L77,61.5"/>
+    </g>
+
+    <!-- C: a relay, device to phone to internet. -->
+    <g id="glyphC" stroke-linecap="round">
+      <circle cx="28" cy="54" r="5.5" stroke="none"/>
+      <circle cx="80" cy="54" r="5.5" stroke="none"/>
+      <circle cx="54" cy="54" r="11" fill="none" stroke-width="5"/>
+      <path d="M33.5,54 H40.5 M67.5,54 H74.5" fill="none" stroke-width="5"/>
+    </g>
+  </defs>
+
+  <rect width="1000" height="660" fill="#F7F7F5"/>
+  <g font-family="Helvetica, Arial, sans-serif" fill="#333">
+    <text x="40" y="44" font-size="22" font-weight="bold">Shapes (on orange), with the status-bar size below each</text>
+    <text x="40" y="404" font-size="22" font-weight="bold">Background colours (with shape B)</text>
+  </g>
+
+  <!-- Row 1: the three shapes on orange. -->
+  <g transform="translate(62,82) scale(2)" clip-path="url(#mask)">
+    <rect width="108" height="108" fill="#E8710A"/>
+    <use xlink:href="#glyphA" stroke="#FFFFFF" fill="#FFFFFF"/>
+  </g>
+  <g transform="translate(392,82) scale(2)" clip-path="url(#mask)">
+    <rect width="108" height="108" fill="#E8710A"/>
+    <use xlink:href="#glyphB" stroke="#FFFFFF" fill="#FFFFFF"/>
+  </g>
+  <g transform="translate(722,82) scale(2)" clip-path="url(#mask)">
+    <rect width="108" height="108" fill="#E8710A"/>
+    <use xlink:href="#glyphC" stroke="#FFFFFF" fill="#FFFFFF"/>
+  </g>
+  <g font-family="Helvetica, Arial, sans-serif" font-size="20" fill="#333" text-anchor="middle">
+    <text x="170" y="282">A  bridge</text>
+    <text x="500" y="282">B  arrow through a phone</text>
+    <text x="830" y="282">C  relay</text>
+  </g>
+
+  <!-- Status-bar size: about 19 px wide, white on the dark bar. -->
+  <rect x="110" y="300" width="120" height="44" rx="22" fill="#202124"/>
+  <use xlink:href="#glyphA" transform="translate(147.3,299.3) scale(0.42)" stroke="#FFFFFF" fill="#FFFFFF"/>
+  <rect x="440" y="300" width="120" height="44" rx="22" fill="#202124"/>
+  <use xlink:href="#glyphB" transform="translate(477.3,299.3) scale(0.42)" stroke="#FFFFFF" fill="#FFFFFF"/>
+  <rect x="770" y="300" width="120" height="44" rx="22" fill="#202124"/>
+  <use xlink:href="#glyphC" transform="translate(807.3,299.3) scale(0.42)" stroke="#FFFFFF" fill="#FFFFFF"/>
+
+  <!-- Row 2: shape A on four backgrounds. -->
+  <g transform="translate(17,430) scale(2)" clip-path="url(#mask)">
+    <rect width="108" height="108" fill="#E8710A"/>
+    <use xlink:href="#glyphB" stroke="#FFFFFF" fill="#FFFFFF"/>
+  </g>
+  <g transform="translate(267,430) scale(2)" clip-path="url(#mask)">
+    <rect width="108" height="108" fill="#1A73E8"/>
+    <use xlink:href="#glyphB" stroke="#FFFFFF" fill="#FFFFFF"/>
+  </g>
+  <g transform="translate(517,430) scale(2)" clip-path="url(#mask)">
+    <rect width="108" height="108" fill="#1E8E3E"/>
+    <use xlink:href="#glyphB" stroke="#FFFFFF" fill="#FFFFFF"/>
+  </g>
+  <g transform="translate(767,430) scale(2)" clip-path="url(#mask)">
+    <rect width="108" height="108" fill="#F1EADF"/>
+    <use xlink:href="#glyphB" stroke="#B4532A" fill="#B4532A"/>
+  </g>
+  <g font-family="Helvetica, Arial, sans-serif" font-size="20" fill="#333" text-anchor="middle">
+    <text x="125" y="630">1  orange</text>
+    <text x="375" y="630">2  blue</text>
+    <text x="625" y="630">3  green</text>
+    <text x="875" y="630">4  cream</text>
+  </g>
+</svg>

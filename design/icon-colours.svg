@@ -1,0 +1,53 @@
+<!-- The bridge on eighteen backgrounds, 2026-11-06. Chosen for now: 9, slate (#5C6F82). The owner also kept
+     6 (light grey), 8 (sage) and 18 (charcoal). -->
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="1000" height="760" viewBox="0 0 1000 760">
+<defs><clipPath id="mask"><circle cx="54" cy="54" r="36"/></clipPath>
+<g id="bridge" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path d="M22,64 H86" stroke-width="5"/>
+  <path d="M37,38 V74 M71,38 V74" stroke-width="5"/>
+  <path d="M37,38 Q54,70 71,38" stroke-width="3.5"/>
+  <path d="M37,38 Q30,54 22,60 M71,38 Q78,54 86,60" stroke-width="3.5"/>
+</g>
+</defs>
+<rect width="1000" height="760" fill="#F7F7F5"/>
+<text x="40" y="42" font-family="Helvetica, Arial, sans-serif" font-size="20" font-weight="bold" fill="#333">Light backgrounds, coloured bridge</text>
+<g transform="translate(5.0,45.0) scale(1.6667)" clip-path="url(#mask)"><rect width="108" height="108" fill="#FFFFFF"/><use xlink:href="#bridge" stroke="#1F3A5F"/></g>
+<circle cx="95" cy="135" r="60" fill="none" stroke="#D0D0D0" stroke-width="1"/>
+<text x="95" y="221" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="16" fill="#333">1  white</text>
+<g transform="translate(167.0,45.0) scale(1.6667)" clip-path="url(#mask)"><rect width="108" height="108" fill="#F3EBDD"/><use xlink:href="#bridge" stroke="#8A4B2C"/></g>
+<text x="257" y="221" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="16" fill="#333">2  cream</text>
+<g transform="translate(329.0,45.0) scale(1.6667)" clip-path="url(#mask)"><rect width="108" height="108" fill="#DCEBFA"/><use xlink:href="#bridge" stroke="#1A5FB4"/></g>
+<text x="419" y="221" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="16" fill="#333">3  pale sky</text>
+<g transform="translate(491.0,45.0) scale(1.6667)" clip-path="url(#mask)"><rect width="108" height="108" fill="#E1EBDD"/><use xlink:href="#bridge" stroke="#2F6B3A"/></g>
+<text x="581" y="221" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="16" fill="#333">4  pale sage</text>
+<g transform="translate(653.0,45.0) scale(1.6667)" clip-path="url(#mask)"><rect width="108" height="108" fill="#FFF1C2"/><use xlink:href="#bridge" stroke="#6B4A12"/></g>
+<text x="743" y="221" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="16" fill="#333">5  butter</text>
+<g transform="translate(815.0,45.0) scale(1.6667)" clip-path="url(#mask)"><rect width="108" height="108" fill="#E9E9E7"/><use xlink:href="#bridge" stroke="#333333"/></g>
+<text x="905" y="221" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="16" fill="#333">6  light grey</text>
+<text x="40" y="287" font-family="Helvetica, Arial, sans-serif" font-size="20" font-weight="bold" fill="#333">Mid tones, white bridge</text>
+<g transform="translate(5.0,290.0) scale(1.6667)" clip-path="url(#mask)"><rect width="108" height="108" fill="#4A90D9"/><use xlink:href="#bridge" stroke="#FFFFFF"/></g>
+<text x="95" y="466" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="16" fill="#333">7  sky blue</text>
+<g transform="translate(167.0,290.0) scale(1.6667)" clip-path="url(#mask)"><rect width="108" height="108" fill="#7A9E7E"/><use xlink:href="#bridge" stroke="#FFFFFF"/></g>
+<text x="257" y="466" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="16" fill="#333">8  sage</text>
+<g transform="translate(329.0,290.0) scale(1.6667)" clip-path="url(#mask)"><rect width="108" height="108" fill="#5C6F82"/><use xlink:href="#bridge" stroke="#FFFFFF"/></g>
+<text x="419" y="466" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="16" fill="#333">9  slate</text>
+<g transform="translate(491.0,290.0) scale(1.6667)" clip-path="url(#mask)"><rect width="108" height="108" fill="#8577C2"/><use xlink:href="#bridge" stroke="#FFFFFF"/></g>
+<text x="581" y="466" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="16" fill="#333">10  lavender</text>
+<g transform="translate(653.0,290.0) scale(1.6667)" clip-path="url(#mask)"><rect width="108" height="108" fill="#C27C88"/><use xlink:href="#bridge" stroke="#FFFFFF"/></g>
+<text x="743" y="466" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="16" fill="#333">11  dusty rose</text>
+<g transform="translate(815.0,290.0) scale(1.6667)" clip-path="url(#mask)"><rect width="108" height="108" fill="#E2B33C"/><use xlink:href="#bridge" stroke="#3A2E12"/></g>
+<text x="905" y="466" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="16" fill="#333">12  mustard</text>
+<text x="40" y="532" font-family="Helvetica, Arial, sans-serif" font-size="20" font-weight="bold" fill="#333">Deep tones, white bridge</text>
+<g transform="translate(5.0,535.0) scale(1.6667)" clip-path="url(#mask)"><rect width="108" height="108" fill="#1F3A5F"/><use xlink:href="#bridge" stroke="#FFFFFF"/></g>
+<text x="95" y="711" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="16" fill="#333">13  navy</text>
+<g transform="translate(167.0,535.0) scale(1.6667)" clip-path="url(#mask)"><rect width="108" height="108" fill="#2E5E3A"/><use xlink:href="#bridge" stroke="#FFFFFF"/></g>
+<text x="257" y="711" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="16" fill="#333">14  forest</text>
+<g transform="translate(329.0,535.0) scale(1.6667)" clip-path="url(#mask)"><rect width="108" height="108" fill="#7A2E3A"/><use xlink:href="#bridge" stroke="#FFFFFF"/></g>
+<text x="419" y="711" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="16" fill="#333">15  burgundy</text>
+<g transform="translate(491.0,535.0) scale(1.6667)" clip-path="url(#mask)"><rect width="108" height="108" fill="#5B3A6B"/><use xlink:href="#bridge" stroke="#FFFFFF"/></g>
+<text x="581" y="711" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="16" fill="#333">16  plum</text>
+<g transform="translate(653.0,535.0) scale(1.6667)" clip-path="url(#mask)"><rect width="108" height="108" fill="#6B4A32"/><use xlink:href="#bridge" stroke="#FFFFFF"/></g>
+<text x="743" y="711" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="16" fill="#333">17  brown</text>
+<g transform="translate(815.0,535.0) scale(1.6667)" clip-path="url(#mask)"><rect width="108" height="108" fill="#2B2B2B"/><use xlink:href="#bridge" stroke="#FFFFFF"/></g>
+<text x="905" y="711" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="16" fill="#333">18  charcoal</text>
+</svg>
