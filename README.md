@@ -18,7 +18,7 @@ What it is for:
 devices  a Mac, a tablet, ...: the official WireGuard apps, each with its own config
   |      WireGuard (UDP) over the phone's Wi-Fi Direct group
   v
-phone    the Wirebridge app: a foreground service, started and stopped in the app
+phone    the Wirebridge app: a foreground service, started and stopped in the app or from a Quick Settings tile
            the group     DIRECT-wb-<name>, WPA2
            boringtun     one WireGuard session per device
            smoltcp       terminates each device's TCP connections; UDP needs no stack
@@ -63,7 +63,8 @@ The Rust core is always built in release, even for a debug APK.
 ## Using it
 
 On the phone, open Wirebridge, allow "Nearby devices" and notifications, and tap Start. Home shows the Wi-Fi to join,
-as a QR code and as a name and passphrase. Under Clients, add one client for each device.
+as a QR code and as a name and passphrase. Under Clients, add one client for each device. To start and stop Wirebridge
+without opening it, add its tile from Quick Settings' edit screen.
 
 On a Mac, the first time:
 
@@ -113,7 +114,7 @@ The tests run WireGuard clients written with boringtun against the server on loo
 ```
 crates/core/     the Rust core: WireGuard (wg.rs), the TCP/UDP stack (stack/), the server the app drives through
                  UniFFI (server.rs), a client's config (conf.rs)
-apps/android/    the app: the foreground service, the Wi-Fi Direct group, the clients, the screens
+apps/android/    the app: the foreground service, the Wi-Fi Direct group, the clients, the screens, the tile
 design/          what the icon was chosen from
 ```
 

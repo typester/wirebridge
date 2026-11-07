@@ -28,6 +28,12 @@ object Tunnel {
     private val lastError = MutableStateFlow<String?>(null)
     val error: StateFlow<String?> = lastError.asStateFlow()
 
+    /** How many clients have been heard from within [CONNECTED_SECONDS]: what the notification and the tile show. */
+    fun connectedClients(): Int =
+        running.value?.stats()?.clients?.count { client ->
+            client.secondsSinceHandshake?.let { it < CONNECTED_SECONDS } == true
+        } ?: 0
+
     /**
      * Starts the endpoint unless it is running already. Returns whether it is running afterwards. Waits for a [stop]
      * still in progress, up to about three seconds, so this must not run on the main thread.

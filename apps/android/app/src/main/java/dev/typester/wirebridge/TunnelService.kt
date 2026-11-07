@@ -89,7 +89,7 @@ class TunnelService : Service() {
         counting = scope.launch {
             var shown = -1
             while (true) {
-                val connected = connectedClients()
+                val connected = Tunnel.connectedClients()
                 if (connected != shown) {
                     update()
                     shown = connected
@@ -124,7 +124,7 @@ class TunnelService : Service() {
             PendingIntent.FLAG_IMMUTABLE,
         )
         val network = Spot.state.value.network
-        val connected = connectedClients()
+        val connected = Tunnel.connectedClients()
         val clients = when (connected) {
             0 -> "No client connected"
             1 -> "1 client connected"
@@ -138,11 +138,6 @@ class TunnelService : Service() {
             .setOngoing(true)
             .build()
     }
-
-    private fun connectedClients(): Int =
-        Tunnel.state.value?.stats()?.clients?.count { client ->
-            client.secondsSinceHandshake?.let { it < Tunnel.CONNECTED_SECONDS } == true
-        } ?: 0
 
     companion object {
         private const val CHANNEL = "tunnel"

@@ -34,7 +34,26 @@
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+            <!-- A long press on the Quick Settings tile opens the app. -->
+            <intent-filter>
+                <action android:name="android.service.quicksettings.action.QS_TILE_PREFERENCES" />
+            </intent-filter>
         </activity>
+
+        <!-- The Quick Settings tile: Start and Stop without opening the app (TunnelTileService.kt). -->
+        <service
+            android:name=".TunnelTileService"
+            android:exported="true"
+            android:icon="@drawable/ic_stat_wirebridge"
+            android:label="@string/app_name"
+            android:permission="android.permission.BIND_QUICK_SETTINGS_TILE">
+            <intent-filter>
+                <action android:name="android.service.quicksettings.action.QS_TILE" />
+            </intent-filter>
+            <meta-data
+                android:name="android.service.quicksettings.TOGGLEABLE_TILE"
+                android:value="true" />
+        </service>
 
         <!-- Exported so that `adb shell am start-foreground-service` can start and stop it while measuring, but only to
              callers holding DUMP: the shell and the system have it, and an ordinary app cannot get it. -->
