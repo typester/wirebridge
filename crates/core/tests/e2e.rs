@@ -12,7 +12,7 @@
 
 use std::collections::VecDeque;
 use std::io::{ErrorKind, Read, Write};
-use std::net::{IpAddr, Ipv4Addr, SocketAddr, TcpListener, UdpSocket};
+use std::net::{IpAddr, Ipv4Addr, Ipv6Addr, SocketAddr, TcpListener, UdpSocket};
 use std::sync::atomic::{AtomicBool, Ordering};
 use std::sync::{Arc, Mutex};
 use std::thread;
@@ -58,8 +58,13 @@ fn start_server(keys: &Keys) -> Server {
 }
 
 fn start_with(server: &StaticSecret, clients: Vec<Client>) -> Server {
+    start_at("127.0.0.1:0", server, clients)
+}
+
+/// The server listening on `bind`: loopback for most checks, a wildcard as in the app for some.
+fn start_at(bind: &str, server: &StaticSecret, clients: Vec<Client>) -> Server {
     let _ = env_logger::builder().is_test(true).try_init();
-    Server::start_on("127.0.0.1:0".parse().unwrap(), server.clone(), clients).unwrap()
+    Server::start_on(bind.parse().unwrap(), server.clone(), clients).unwrap()
 }
 
 /// Stops the server and checks that stopping does not hang, which is what a flow left open would cause.
@@ -84,7 +89,13 @@ impl WgClient {
     }
 
     fn with(server: SocketAddr, own: &StaticSecret, servers: &StaticSecret) -> Self {
-        let socket = UdpSocket::bind("127.0.0.1:0").unwrap();
+        Self::between("127.0.0.1:0", server, own, servers)
+    }
+
+    /// From a socket bound to `local`, which takes datagrams from `server` alone: a reply from any other address is
+    /// never seen.
+    fn between(local: &str, server: SocketAddr, own: &StaticSecret, servers: &StaticSecret) -> Self {
+        let socket = UdpSocket::bind(local).unwrap();
         socket.connect(server).unwrap();
         // Short, so that a polling loop with nothing to read moves on quickly.
         socket.set_read_timeout(Some(Duration::from_millis(1))).unwrap();
@@ -670,6 +681,25 @@ fn a_client_cannot_use_another_address() {
     let stats = server.stats();
     assert_eq!(stats.wrong_source, 1, "{stats:?}");
     assert_eq!(stats.udp_total, 0, "{stats:?}");
+    stop_within(server, Duration::from_secs(5));
+}
+
+/// The app listens on `[::]`, dual-stack: a client over IPv4 and one over IPv6 both get their answers.
+#[test]
+fn a_dual_stack_server_answers_both_families() {
+    let keys = keys();
+    let tablet = new_key();
+    let server = start_at("[::]:0", &keys.server, vec![client(&keys.client, MAC_IP), client(&tablet, TABLET_IP)]);
+    let port = server.local_addr().port();
+    let echo = udp_echo_server();
+
+    let mut mac = WgClient::between("127.0.0.1:0", (Ipv4Addr::LOCALHOST, port).into(), &keys.client, &keys.server);
+    mac.handshake();
+    assert!(udp_echo(&mut mac, MAC_IP, echo, b"over IPv4", Duration::from_secs(5)), "no echo over IPv4");
+
+    let mut pad = WgClient::between("[::1]:0", (Ipv6Addr::LOCALHOST, port).into(), &tablet, &keys.server);
+    pad.handshake();
+    assert!(udp_echo(&mut pad, TABLET_IP, echo, b"over IPv6", Duration::from_secs(5)), "no echo over IPv6");
     stop_within(server, Duration::from_secs(5));
 }
 
