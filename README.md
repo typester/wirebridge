@@ -106,6 +106,10 @@ echo 'TS_BIND_TO_INTERFACE_BY_ROUTE=true' | sudo tee -a /private/var/root/Librar
 - A Mac that has joined the group may pick it over other known Wi-Fi while it is up. Stop Wirebridge when it is not
   needed.
 - The speed is the phone's: its cellular link or the Wi-Fi it is on, shared by every device.
+- A VPN on the phone has to leave local networks out. While a VPN that apps cannot bypass carries all the phone's
+  traffic, Android lets apps receive only through it, and the devices' packets never reach Wirebridge. In OpenVPN
+  Connect, turn on Allow LAN Access and connect after starting Wirebridge: it leaves out the local networks there are
+  when it connects, the group among them. The devices' traffic then goes out through the VPN, as the phone's own does.
 
 ## Development
 
@@ -115,6 +119,16 @@ cargo clippy --workspace --all-targets --features wirebridge-core/bindgen -- -D 
 ```
 
 The tests run WireGuard clients written with boringtun against the server on loopback.
+
+A running phone can be checked from a computer on the same network. Give the probe a client's config, by an absolute
+path, with its `Endpoint` changed to the phone's address on that network:
+
+```
+WIREBRIDGE_CONF=/path/to/client.conf cargo test -p wirebridge-core --test phone -- --ignored --nocapture
+```
+
+It handshakes with the phone, then asks 1.1.1.1 through the tunnel which address the question came from: the phone's
+own connection, or a VPN on it.
 
 ```
 crates/core/     the Rust core: WireGuard (wg.rs), the TCP/UDP stack (stack/), the server the app drives through
